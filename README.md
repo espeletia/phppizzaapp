@@ -33,6 +33,27 @@ Regulární výrazy jsou vzory používané k vyhledávání kombinací znaků v
 
 ifikátorů produktů nebo množství z řetězce.
 
+## Globální Proměnné v Projektu PHP Pizzerie
+
+V projektu PHP pizzerie jsou využívány několik vestavěných globálních proměnných, známých jako superglobální proměnné v PHP. Tyto superglobální proměnné jsou speciální proměnné v PHP, které jsou dostupné ve všech oblastech skriptu. Klíčovými superglobálními proměnnými použitými v tomto projektu jsou `$_GET`, `$_POST` a `$_SESSION`.
+
+### 1. `$_GET`
+- **Co To Je**: `$_GET` je asociativní pole proměnných předaných do aktuálního skriptu prostřednictvím parametrů URL.
+- **Jak Funguje**: Když uživatel přistoupí na PHP stránku přes URL s dotazovými parametry (např. `page.php?id=123`), `$_GET` zachytí tyto parametry. Data jsou přístupná ve formě `$_GET['id']` v daném příkladu.
+- **Použití v Projektu**: `$_GET` je primárně používán pro získávání dat odeslaných v URL. Například v souboru jako `delete.php` by mohl být použit k načtení ID položky z řetězce dotazu pro odstranění z košíku.
+
+### 2. `$_POST`
+- **Co To Je**: `$_POST` je asociativní pole dat odeslaných do skriptu prostřednictvím HTTP metody POST.
+- **Jak Funguje**: Tato superglobální proměnná se používá, když je formulář odeslán pomocí metody "post". Data z polí formuláře nejsou viditelná v URL, což činí `$_POST` bezpečnější metodou pro přenos citlivých informací.
+- **Použití v Projektu**: V souborech jako `process_order.php` je `$_POST` použit k shromažďování uživatelských vstupů z formulářů objednávek, jako jsou údaje o zákaznících a specifikace objednávky.
+
+### 3. `$_SESSION`
+- **Co To Je**: `$_SESSION` je asociativní pole obsahující proměnné sezení dostupné pro aktuální skript. Používá se k ukládání informací o uživatelském sezení.
+- **Jak Funguje**: PHP sezení umožňují zachovat určitá data přes následující přístupy. Když je sezení zahájeno pomocí `session_start()`, PHP přiřadí uživatelskému sezení jedinečný identifikátor, který je udržován jako cookie na zařízení uživatele nebo přenášen prostřednictvím URL.
+- **Použití v Projektu**: Projekt využívá `$_SESSION` k ukládání a správě dat jako obsah nákupního košíku a uživatelských detailů napříč různými stránkami. To umožňuje uchovávat uživatelská data, jako jsou položky v košíku, i když uživatel prochází různými stránkami aplikace.
+
+Shrnutí, `$_GET`, `$_POST` a `$_SESSION` hrají zásadní roli v načítání dat, zpracování dat z formulářů a udržování stavu uživatelského sezení. Jejich vhodné použití je základem pro funkcionalitu a bezpečnost aplikace PHP pizzerie.
+
 ## Implementace v Poskytnutých Souborech
 
 Z poskytnutých PHP souborů, pokud se regex používá, bude se typicky nacházet v souborech zpracovávajících odeslání formulářů nebo zpracování dat, jako jsou `process_order.php`, `orderForm.php` nebo ve skriptech pro validaci. Bez explicitních kódových segmentů z těchto souborů však zůstávají detaily implementace spekulativní.
